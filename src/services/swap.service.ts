@@ -44,6 +44,7 @@ export const updateState = async (
     if (state === SwapState.EXECUTED) {
       await userService.addNfts(swap.creator, swap.receiverNfts);
       await userService.addNfts(swap.receiver, swap.creatorNfts);
+      await userService.removeNfts(swap.receiver, swap.receiverNfts);
     } else {
       await userService.addNfts(swap.creator, swap.creatorNfts);
     }
